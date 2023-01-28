@@ -1,55 +1,56 @@
 import { useState } from 'react'
 
-const Display = (props) => {
+
+const Header = ({text}) =>{
   return (
-    <div>{props.counter}</div>
-  )
-}
-const Button = ({handleLeftClick, text}) => {
-  return (
-    <button onClick={handleLeftClick}>
-      {text}
-    </button>
+    <>
+   <h1> {text}</h1>
+    </>
   )
 }
 
-const History = (props) => {
-  if (props.allClicks.length === 0) {
-    return (
-      <div>
-        the app is used by pressing the buttons
-      </div>
+const Button = ({label, handleClick}) =>{
+  return (
+    <>
+    <button onClick={handleClick}>{label}</button>
+    </>
+  )
+}
+const Display = ({label, value, percent}) =>{
+  if (percent === true) {
+    return(
+      <>
+      {label} {value} %<br/>
+      </>
     )
   }
-  return (
-    <div>
-      button press history: {props.allClicks.join(' ')}
-    </div>
+  return(
+    <>
+    {label} {value}<br/>
+    </>
   )
 }
-
 const App = () => {
-  const [left, setLeft] = useState(0)
-  const [right, setRight] = useState(0)
-  const [allClicks, setAll] = useState([])
+  // save clicks of each button to its own state
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
-  const handleLeftClick = () => {
-    setAll(allClicks.concat('L'))
-    setLeft(left + 1)
-  }
-
-  const handleRightClick = () => {
-    setAll(allClicks.concat('R'))
-    setRight(right + 1)
-  }
-  
+  const average = (good-bad)/(good+neutral+bad)
+  const persentage = (good)/(good+neutral+bad) *100
   return (
     <div>
-      {left}
-      <button onClick={handleLeftClick}>left</button>
-      <button onClick={handleRightClick}>right</button>
-      {right}
-      <History allClicks={allClicks} />
+      <Header text = {"give feedback"}/>
+      <Button label = {"good"} handleClick={()=>setGood(good + 1)}/>
+      <Button label = {"neutral"} handleClick={()=>setNeutral(neutral + 1)}/>
+      <Button label = {"bad"} handleClick={()=>setBad(bad + 1)}/>
+      <Header text = {"statistics"} />
+      <Display label = {"good"} value = {good}/>
+      <Display label = {"neutral"} value = {neutral}/>
+      <Display label = {"bad"} value = {bad}/>
+      <Display label = {"all"} value = {good+neutral+bad}/>
+      <Display label = {"average"} value = {average}/>
+      <Display label = {"persentage"} value = {persentage} percent = {true}/> 
     </div>
   )
 }
