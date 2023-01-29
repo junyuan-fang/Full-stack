@@ -44,7 +44,6 @@ const Statistics = (props) => {
   if (!clicked){
     return (
       <>
-      <Header text = {"statistics"} />
       <StatisticLine text = {"No feedback given"}/>
       </>
     )
