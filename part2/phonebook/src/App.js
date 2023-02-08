@@ -2,14 +2,11 @@ import { useState } from 'react'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas',
-      id : 1,
-      number : '040-1234567'},
-      { name: 'Ada Lovelace',
-      id : 2,
-      number : '39-44-5323523'},
-      
-    ]) 
+    { name: 'Arto Hellas', number: '040-123456', id: 1 },
+    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
+  ])
 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
@@ -17,10 +14,10 @@ const App = () => {
   //console.log("hehehehehehe", persons[0].name)
   const personsToShow = (newFilter === '')
     ? persons
-    : persons.filter(person => person.name.includes(newFilter))
+    : persons.filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase()))
   console.log("personsToShow: ", personsToShow)
   console.log("newFilter: ", newFilter)
-  console.log("filted: ", persons.filter(person => person.name.includes(newFilter)))
+  console.log("filted: ", persons.filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase())))
 
   const addPeople = (event) => {
     event.preventDefault()
