@@ -1,4 +1,4 @@
-import { useState } from '../../part2c/node_modules/@types/react'
+import { useState } from 'react'
 import Note from './components/Note'
 
 const App = (props) => {
