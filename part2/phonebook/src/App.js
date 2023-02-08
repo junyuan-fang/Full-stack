@@ -23,7 +23,12 @@ const App = () => {
 
       <h2>add a new</h2>
 
-      <PersonForm persons = {persons} newName={newName} newNumber = {newNumber} setNewNumber={setNewNumber} setNewName={setNewName} setPersons={setPersons}/>
+      <PersonForm persons = {persons} 
+                  newName={newName} 
+                  newNumber = {newNumber} 
+                  setNewNumber={setNewNumber} 
+                  setNewName={setNewName} 
+                  setPersons={setPersons}/>
 
 
       <h2>Numbers</h2>
