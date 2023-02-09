@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom/client"
+import ReactDOM from "../../GettingDataFromServer/node_modules/@types/react-dom/client"
 
 import App from "./App"
 
